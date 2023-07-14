@@ -11,7 +11,7 @@ const listReducer = (state = initState, action) => {
   switch (action.type) {
     case SET_LIST:
       return {...state,
-              list: action.list,
+              items: action.data,
              }
     default:
       return state;
