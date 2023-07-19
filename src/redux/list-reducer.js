@@ -11,7 +11,12 @@ const listReducer = (state = initState, action) => {
   switch (action.type) {
     case SET_LIST:
       return {...state,
-              items: action.data,
+              items: action.data.reduce((res, item, index) => (
+                [...res,
+                 {...item,
+                  accDistance: index > 0 ? item.distance + res[index - 1].accDistance : item.distance
+                 }
+                ]),[]),
              }
     default:
       return state;
